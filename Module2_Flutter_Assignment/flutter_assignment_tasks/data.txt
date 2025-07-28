@@ -1,0 +1,2 @@
+Hello from Dart! This is file I/O demo.
+Current time: 2025-07-27 11:30:41.884710
