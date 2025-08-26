@@ -1,0 +1,15 @@
+Module-6 Working with Forms and User Input
+
+Que:1 Explain the structure and purpose of forms in Flutter.
+
+Ans: Forms in Flutter: Forms are used to collect and validate user input through a Form widget containing FormField widgets. They manage state and facilitate data submission.
+
+Que:2 Describe how controllers and listeners are used to manage form input.
+
+Ans: Controllers and Listeners: TextEditingController manages text input in fields, allowing you to read values and add listeners for real-time updates.
+
+Que:3 List some common form validation techniques and provide examples.
+
+Ans: Validation Techniques: Common techniques include checking for required fields, validating email formats, and ensuring password strength, using functions that return error messages if validation fails.
+
+
