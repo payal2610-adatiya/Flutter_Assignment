@@ -1,0 +1,12 @@
+Module-4 Assignment(Navigation and Routing)
+Que:1  Explain how the Navigator widget works in Flutter.
+
+Ans: The Navigator widget in Flutter manages a stack of Route objects, allowing for navigation between different screens (routes) in an app. It provides methods like push, pop, and pushReplacement to control the navigation stack.
+
+Que:2  Describe the concept of named routes and their advantages over direct route navigation.
+
+Ans: Named routes are predefined routes identified by a unique string. Their advantages include improved code organization, easier navigation management, and the ability to pass arguments more conveniently compared to direct route navigation.
+
+Que:3  Explain how data can be passed between screens using route arguments.
+
+Ans: Data can be passed between screens using route arguments by defining a route with parameters and accessing them in the destination screen using ModalRoute.of(context).settings.arguments. This allows for seamless data transfer during navigation.
