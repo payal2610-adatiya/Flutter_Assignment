@@ -1,0 +1,23 @@
+Que 1: Explain the difference between local storage options (shared_preferences, SQLite, Hive):
+
+Ans: Difference between local storage options:
+shared_preferences → Stores small key-value pairs (like settings, login status). Not for complex data.
+SQLite → Relational database for structured data with tables, rows, queries. Good for complex, relational storage.
+Hive → NoSQL database, very fast, stores objects directly, works offline, great for Flutter apps.
+
+
+Que 2: Describe CRUDoperations and how they are implemented in SQLite or Hive.
+
+Ans:CRUD operations in SQLite / Hive:
+C (Create) → Insert data into table/box.
+R (Read) → Fetch/query data from table/box.
+U (Update) → Modify existing records.
+D (Delete) → Remove records.
+->In SQLite → done using SQL queries (INSERT, SELECT, UPDATE, DELETE).
+->In Hive → done using box methods (put, get, putAt, delete).
+
+Que 3: Explain the advantages and use cases for shared_preferences.
+
+Ans: Advantages & use cases of shared_preferences:
+Advantages → Simple API, lightweight, persistent across app restarts.
+Use cases → Storing login state, theme mode, user settings, small flags, and preferences.
