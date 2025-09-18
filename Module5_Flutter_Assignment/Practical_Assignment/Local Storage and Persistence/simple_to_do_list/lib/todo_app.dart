@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'dp_helper.dart';
 
 class ToDoApp extends StatefulWidget {
   const ToDoApp({super.key});
@@ -10,7 +9,6 @@ class ToDoApp extends StatefulWidget {
 }
 
 class _ToDoAppState extends State<ToDoApp> {
-  Database? database;
   List<Map<String, dynamic>> tasks = [];
   final TextEditingController controller = TextEditingController();
   int? editingId;
@@ -18,59 +16,36 @@ class _ToDoAppState extends State<ToDoApp> {
   @override
   void initState() {
     super.initState();
-    initDb();
-  }
-
-  /// Initialize Database
-  Future<void> initDb() async {
-    database = await openDatabase(
-      join(await getDatabasesPath(), 'tasks.db'),
-      onCreate: (db, version) {
-        return db.execute(
-          "CREATE TABLE tasks(id INTEGER PRIMARY KEY, title TEXT)",
-        );
-      },
-      version: 1,
-    );
     loadTasks();
   }
 
-  /// Load tasks from DB
   Future<void> loadTasks() async {
-    final data = await database!.query("tasks");
+    final data = await DBHelper.getTasks();
     setState(() {
       tasks = data;
     });
   }
 
-  /// Add new task
   Future<void> addTask(String title) async {
     if (title.trim().isEmpty) return;
-    await database!.insert("tasks", {"title": title});
+    await DBHelper.insertTask(title);
     controller.clear();
     loadTasks();
   }
 
   Future<void> updateTask(int id, String newTitle) async {
     if (newTitle.trim().isEmpty) return;
-    await database!.update(
-      "tasks",
-      {"title": newTitle},
-      where: "id = ?",
-      whereArgs: [id],
-    );
+    await DBHelper.updateTask(id, newTitle);
     controller.clear();
     editingId = null;
     loadTasks();
   }
 
-  /// Delete task
   Future<void> deleteTask(int id) async {
-    await database!.delete("tasks", where: "id = ?", whereArgs: [id]);
+    await DBHelper.deleteTask(id);
     loadTasks();
   }
 
-  /// Start editing
   void startEditing(Map<String, dynamic> task) {
     controller.text = task["title"];
     setState(() {
