@@ -42,10 +42,77 @@ class _NotesAppState extends State<NotesApp> {
     loadNotes();
   }
 
+  /// Update Note
+  Future<void> updateNote(int id) async {
+    if (titleController.text.trim().isEmpty &&
+        contentController.text.trim().isEmpty) return;
+
+    await DbHelper.instance.updateNote({
+      "id": id,
+      "title": titleController.text,
+      "content": contentController.text,
+    });
+
+    titleController.clear();
+    contentController.clear();
+    loadNotes();
+  }
+
   /// Delete Note
   Future<void> deleteNote(int id) async {
     await DbHelper.instance.deleteNote(id);
     loadNotes();
+  }
+
+  /// Show Edit Dialog
+  void showEditDialog(Map<String, dynamic> note) {
+    titleController.text = note["title"];
+    contentController.text = note["content"];
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Edit Note"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: titleController,
+              decoration: const InputDecoration(
+                hintText: "Note Title",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: contentController,
+              maxLines: 3,
+              decoration: const InputDecoration(
+                hintText: "Note Content",
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              titleController.clear();
+              contentController.clear();
+              Navigator.pop(context);
+            },
+            child: const Text("Cancel"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              updateNote(note["id"]);
+              Navigator.pop(context);
+            },
+            child: const Text("Update"),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -98,9 +165,19 @@ class _NotesAppState extends State<NotesApp> {
                       note["content"] ?? "",
                       style: const TextStyle(fontSize: 16),
                     ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
-                      onPressed: () => deleteNote(note["id"]),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon:
+                          const Icon(Icons.edit, color: Colors.blueAccent),
+                          onPressed: () => showEditDialog(note),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => deleteNote(note["id"]),
+                        ),
+                      ],
                     ),
                   );
                 },
