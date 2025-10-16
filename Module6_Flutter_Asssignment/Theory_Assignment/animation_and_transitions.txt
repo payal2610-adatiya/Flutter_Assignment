@@ -1,0 +1,29 @@
+Module 9: Animations and Transitions
+
+Que 1:Explain the difference between implicit and explicit animations in Flutter.
+
+Ans:Implicit Animations (Easy):
+Built-in widgets that animate automatically
+Just change the values, animation happens by itself
+Examples: AnimatedContainer, AnimatedOpacity
+Like: Automatic car - just press gas/brake
+
+Explicit Animations (Manual):
+You control every part of the animation
+More flexible but more code
+Use AnimationController, Tween, etc.
+Like: Manual car - you control gear, clutch, everything.
+
+Que 2:Describe the purpose of AnimationController and its usage.
+Ans: The "remote control" for your animations
+Purpose:
+Starts, stops, and controls animation speed
+Manages animation duration (how long it runs)
+Provides current animation value (0.0 to 1.0)
+
+Que 3: Explain the concept of Hero animations in Flutter.
+Ans:  Smooth transition when moving a widget between screens
+How it works:
+Tag widgets with same "hero tag" on both screens
+Flutter automatically animates between them
+Creates flying/morphing effect
