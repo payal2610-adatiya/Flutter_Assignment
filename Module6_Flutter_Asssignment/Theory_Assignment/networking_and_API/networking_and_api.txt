@@ -1,0 +1,28 @@
+Module 7: Networking and API Integration
+
+Que 1:  Explain what a RESTful API is and its importance in mobile applications.
+
+Ans: A RESTful API is an interface that follows REST architecture principles, using HTTP requests to communicate between mobile apps and servers. It's important because it enables mobile apps to:
+-Retrieve and sync data from web servers
+-Work with cloud databases
+-Integrate with third-party services
+-Maintain separation between client and server
+
+Que 2:Describe how JSON details parsed and used in Flutter.
+Ans: JSON data in Flutter is parsed using:
+-dart: convert package for basic parsing
+-Manual parsing with json.decode() and json.encode()
+-Automated parsing with json_serializable or built_value
+-Converted into Dart objects using factory constructors
+
+Que 3: Explain the purpose of HTTP methods (GET, POST, PUT, DELETE) and when to use each.
+GET: Retrieve data from server (read-only)
+POST: Create new resources on server
+PUT: Update existing resources (full update)
+DELETE: Remove resources from server
+Example usage:
+GET /users - fetch all users
+POST /users - create new user
+PUT /users/1 - update user with ID 1
+DELETE /users/1 - delete user with ID 1
+
