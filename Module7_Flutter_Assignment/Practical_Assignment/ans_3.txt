@@ -1,0 +1,43 @@
+Practical Que: 3
+Ans:
+
+1.Prepare Your App
+
+ -Update the app version in pubspec.yaml.
+ -Remove all debug print statements.
+ -Set app icons using flutter_launcher_icons.
+
+2.Build the Release AAB
+-Run:
+     flutter build appbundle --release
+This generates the .aab file required by Google Play.
+
+3.Create a Google Play Developer Account
+  -Go to Google Play Console.
+  -Pay the one-time $25 registration fee.
+
+4.Create a New App in Play Console
+  -Click Create App.
+  -Enter app name, description, screenshots, and         icon.
+
+5.Complete App Content Requirements
+ -Add privacy policy.
+ -Fill content rating form.
+ -Choose target audience and permissions.
+ -Select app category.
+
+6.Upload the AAB File
+-Go to Production → Create Release.
+-Upload the generated AAB file.
+
+7.Set Pricing & Distribution
+-Choose if the app is free or paid.
+-Select the countries where it will be available.
+
+8.Submit for Review
+-Click Review Release.
+-Roll out your app to production.
+
+9.Wait for Approval
+-Google reviews the app (1–3 days).
+-Once approved, your Flutter app becomes live on the Play Store.
